@@ -9,7 +9,12 @@
 import UIKit
 
 class AlarmDetailTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var dateDisplayPicker: UIDatePicker!
+    @IBOutlet weak var textFieldDetail: UITextField!
+    
+    @IBOutlet weak var enableButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +32,13 @@ class AlarmDetailTableViewController: UITableViewController {
         return 0
     }
 
+    @IBAction func enableButtonTapped(_ sender: Any) {
+    }
+    
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
