@@ -26,34 +26,44 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k0u-KJ-pA8">
-                                            <rect key="frame" x="24" y="23" width="42" height="58"/>
+                                            <rect key="frame" x="24" y="23" width="150" height="58"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EV-IF-GeP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="29.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EV-IF-GeP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="27"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2a-wt-tI2">
-                                                    <rect key="frame" x="0.0" y="37.5" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2a-wt-tI2">
+                                                    <rect key="frame" x="0.0" y="35" width="150" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="w7C-WX-XeN"/>
+                                            </constraints>
                                         </stackView>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vVz-LH-okK">
-                                            <rect key="frame" x="310" y="36" width="49" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vVz-LH-okK">
+                                            <rect key="frame" x="295" y="36.5" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="switchValueChanged:" destination="HmE-p0-8so" eventType="valueChanged" id="WIX-nC-8Qc"/>
+                                            </connections>
                                         </switch>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="vVz-LH-okK" firstAttribute="centerY" secondItem="hwE-Dl-yGV" secondAttribute="centerY" id="Cdm-oK-LUL"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="k0u-KJ-pA8" secondAttribute="bottom" constant="12" id="WsV-W3-PfG"/>
                                         <constraint firstItem="k0u-KJ-pA8" firstAttribute="top" secondItem="hwE-Dl-yGV" secondAttribute="topMargin" constant="12" id="Xk3-tI-haB"/>
+                                        <constraint firstItem="vVz-LH-okK" firstAttribute="trailing" secondItem="hwE-Dl-yGV" secondAttribute="trailingMargin" constant="-15" id="YkU-hJ-MLn"/>
                                         <constraint firstItem="k0u-KJ-pA8" firstAttribute="leading" secondItem="hwE-Dl-yGV" secondAttribute="leadingMargin" constant="8" id="d8A-44-pZj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="D2a-wt-tI2" id="Bp6-Wh-gvw"/>
+                                    <outlet property="switchValueChanged" destination="vVz-LH-okK" id="bPz-Gj-BDR"/>
+                                    <outlet property="timeLabel" destination="5EV-IF-GeP" id="t2w-5f-34x"/>
                                     <segue destination="KNg-xW-BoL" kind="show" id="oJm-NJ-3h6"/>
                                 </connections>
                             </tableViewCell>
