@@ -65,7 +65,6 @@
 				6A0135F522B83C06000D1B4D /* Model */,
 				6A0135EB22B82F8E000D1B4D /* Resources */,
 				6A0135F222B83BCC000D1B4D /* View Controllers */,
-				6A0135F022B8319F000D1B4D /* SwitchTableViewCell.swift */,
 				6A0135F822B83E9A000D1B4D /* ModelController */,
 			);
 			path = AlarmApp;
@@ -86,6 +85,7 @@
 		6A0135F222B83BCC000D1B4D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A0135F022B8319F000D1B4D /* SwitchTableViewCell.swift */,
 				6A0135EC22B830AB000D1B4D /* AlarmListTableViewController.swift */,
 				6A0135EE22B83166000D1B4D /* AlarmDetailTableViewController.swift */,
 			);

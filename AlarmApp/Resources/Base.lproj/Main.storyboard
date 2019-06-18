@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Alarm List Table View Controller-->
         <scene sceneID="Bjq-46-t8X">
             <objects>
-                <tableViewController id="fDg-vJ-d4h" sceneMemberID="viewController">
+                <tableViewController id="fDg-vJ-d4h" customClass="AlarmListTableViewController" customModule="AlarmApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ys1-tZ-bu1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="104" id="HmE-p0-8so" customClass="SwitchTableViewCell" customModule="AlarmApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="switchCell" rowHeight="104" id="HmE-p0-8so" customClass="SwitchTableViewCell" customModule="AlarmApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="104"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HmE-p0-8so" id="hwE-Dl-yGV">
@@ -26,23 +26,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k0u-KJ-pA8">
-                                            <rect key="frame" x="24" y="23" width="150" height="58"/>
+                                            <rect key="frame" x="24" y="23" width="270" height="58"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EV-IF-GeP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="27"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="27"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2a-wt-tI2">
-                                                    <rect key="frame" x="0.0" y="35" width="150" height="23"/>
+                                                    <rect key="frame" x="0.0" y="35" width="270" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="150" id="w7C-WX-XeN"/>
+                                                <constraint firstAttribute="width" constant="270" id="w7C-WX-XeN"/>
                                             </constraints>
                                         </stackView>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vVz-LH-okK">
@@ -64,7 +64,7 @@
                                     <outlet property="nameLabel" destination="D2a-wt-tI2" id="Bp6-Wh-gvw"/>
                                     <outlet property="switchValueChanged" destination="vVz-LH-okK" id="bPz-Gj-BDR"/>
                                     <outlet property="timeLabel" destination="5EV-IF-GeP" id="t2w-5f-34x"/>
-                                    <segue destination="KNg-xW-BoL" kind="show" id="oJm-NJ-3h6"/>
+                                    <segue destination="KNg-xW-BoL" kind="show" identifier="toDetailVC" id="oJm-NJ-3h6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -104,7 +104,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nzh-65-bzw">
-                                                    <rect key="frame" x="8" y="19" width="359" height="224"/>
+                                                    <rect key="frame" x="8" y="19" width="359" height="224.5"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="582498266.19482005">
                                                         <!--2019-06-17 21:04:26 +0000-->
                                                     </date>

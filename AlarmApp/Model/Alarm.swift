@@ -16,7 +16,11 @@ class Alarm: Codable {
     var uuid: String
     var fireTimeAsString: String {
         get {
-            return DateFormatter().string(from: fireDate)
+            let formatter = DateFormatter()
+            formatter.timeZone = TimeZone.current
+            formatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let dateString = formatter.string(from: fireDate)
+            return dateString
         }
         
     }

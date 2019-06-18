@@ -10,40 +10,49 @@ import UIKit
 
 class AlarmDetailTableViewController: UITableViewController {
     
+    var alarm: Alarm? {
+        didSet {
+            loadViewIfNeeded()
+            updateViews()
+        }
+    }
+    var alarmIsOn: Bool = true
+    
     @IBOutlet weak var dateDisplayPicker: UIDatePicker!
     @IBOutlet weak var textFieldDetail: UITextField!
-    
     @IBOutlet weak var enableButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
     @IBAction func enableButtonTapped(_ sender: Any) {
     }
     
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let alarmName = textFieldDetail.text else { return }
+        if let alarm = alarm {
+            AlarmController.sharedInstance.update(alarm: alarm, fireDate: dateDisplayPicker.date, name: alarm.name, enabled: alarmIsOn)
+        } else {
+            AlarmController.sharedInstance.addAlarm(fireDate: dateDisplayPicker.date, name: alarmName, enabled: alarmIsOn)
+        }
+        navigationController?.popViewController(animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 
+    func updateViews() {
+
+        guard let alarm = alarm else { return }
+        alarmIsOn = alarm.enabled
+        dateDisplayPicker.date = alarm.fireDate
+        textFieldDetail.text = alarm.name
+    
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

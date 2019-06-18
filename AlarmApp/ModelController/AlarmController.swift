@@ -19,7 +19,7 @@ class AlarmController {
     var mockAlarms: [Alarm] {
         
         let firstAlarm = Alarm(name: "DevMount Alarm", fireDate: Date())
-        let secondAlarm = Alarm(name: "DevMount Alarm", fireDate: Date())
+        let secondAlarm = Alarm(name: "Sat Lesson Alarm", fireDate: Date())
         return [firstAlarm, secondAlarm]
     }
     
@@ -39,5 +39,8 @@ class AlarmController {
     func delete(alarm: Alarm) {
         guard let index = alarms.firstIndex(of: alarm) else { return }
         alarms.remove(at: index)
+    }
+    func toggleEnabled(for alarm: Alarm) {
+        alarm.enabled = !alarm.enabled
     }
 }
