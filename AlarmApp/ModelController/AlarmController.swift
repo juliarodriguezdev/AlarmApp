@@ -7,8 +7,42 @@
 //
 
 import UIKit
+import UserNotifications
 
-class AlarmController {
+// 1: Delegate / Protocol
+protocol AlarmScheduler: class {
+    func scheduleUserNotifications()
+    func cancelUserNotifications()
+}
+
+extension AlarmScheduler {
+    
+    func scheduleUserNotifications() {
+        // Configure the notification's payload
+        let content = UNMutableNotificationContent()
+        content.title = "Rise and Shine"
+        content.subtitle = "It's time to start the day"
+        content.badge = 1
+        content.sound = .default
+        
+    // Deliver the notification in five seconds
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: AlarmController.sharedInstance.userNotificationIdentifier, content: content, trigger: trigger)
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error) in
+            if let theError = error {
+                print(theError.localizedDescription)
+            }
+        }
+    }
+    func cancelUserNotifications() {
+        
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [AlarmController.sharedInstance.userNotificationIdentifier])
+        
+    }
+}
+
+class AlarmController: AlarmScheduler {
     
     init() {
         loadFromPersistentStore()
@@ -18,6 +52,11 @@ class AlarmController {
     static let sharedInstance = AlarmController()
     
     var alarms: [Alarm] = []
+    
+    // 2: Delegate / Protocol
+    weak var delegate: AlarmScheduler?
+    
+    fileprivate let userNotificationIdentifier = "FiveSecond"
     
     var mockAlarms: [Alarm] {
         
@@ -31,6 +70,9 @@ class AlarmController {
         let newAlarm = Alarm(name: name, enabled: enabled, uuid: "will be used later", fireDate: fireDate)
         
         alarms.append(newAlarm)
+        if enabled {
+            scheduleUserNotifications()
+        } else { return }
         saveToPersistentStorage()
         
     }
@@ -39,6 +81,12 @@ class AlarmController {
         alarm.fireDate = fireDate
         alarm.name = name
         alarm.enabled = enabled
+        
+        if enabled {
+            scheduleUserNotifications()
+        } else {
+            cancelUserNotifications()
+        }
         
         saveToPersistentStorage()
     }
@@ -50,6 +98,11 @@ class AlarmController {
         saveToPersistentStorage()
     }
     func toggleEnabled(for alarm: Alarm) {
+        if alarm.enabled {
+            scheduleUserNotifications()
+        } else {
+            cancelUserNotifications()
+        }
         alarm.enabled = !alarm.enabled
     }
     // Read (CRUD)
@@ -83,4 +136,9 @@ class AlarmController {
         }
         
     }
+}
+
+extension AlarmController {
+    
+    
 }

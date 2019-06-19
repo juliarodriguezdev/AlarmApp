@@ -8,11 +8,12 @@
 
 import UIKit
 
-class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDelegate {
+class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDelegate, AlarmScheduler {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+// 4 Delegate / Protocol
+        AlarmController.sharedInstance.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,5 +78,3 @@ class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDe
     }
 
 }
-
-
